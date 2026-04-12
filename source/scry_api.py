@@ -10,7 +10,7 @@ IS_FIRST_QUERY = True
 
 def get_api_url_from_query(query):
     # transform the query string into a url-friendly format, and attach it to the scryfall api url
-    api_url = "https://api.scryfall.com/cards/search?q="
+    api_url = 'https://api.scryfall.com/cards/search?q='
     return api_url + urllib.parse.quote_plus(query)
 
 
