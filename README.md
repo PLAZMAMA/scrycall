@@ -6,27 +6,22 @@ Scrycall makes it easy to search for MTG cards from the command line. It prints 
 Scrycall also stores the JSON data in a local cache at `~/.cache/scrycall/` to quickly access for repeated queries. Anything in the cache older than 24 hours is considered stale, and will automatically be replaced with fresh data from the api.
 
 
-## How to run Scrycall
-You can download the project using the command `git clone https://github.com/0xdanelia/scrycall`
-
-The project comes with an executable zip file `scry` which can be run like any other Python script.
+## Installation
+Download the project using the command `git clone https://github.com/0xdanelia/scrycall`
+Then enter the project directory and run the build script.
 ```
-$ python scry [ARGS]
-```
-On Linux, this file can be copied to a location in your `$PATH` and then called like any other program.
-```
-$ scry [ARGS]
+$ cd scrycall
+$ python3 build.py
 ```
 
-## How to build Scrycall
-The project comes with a `build.py` script which creates an executable zip file of the source code.
+This creates the executable file `scry`. Move this file to a directory in your `$PATH` and then you can run it like any other program.
 ```
-$ python build.py
+$ mv scry ~/.local/bin
+$ scry black lotus
 ```
 
 
-## How to query with Scrycall
-
+## Searching for cards
 First familiarize yourself with the Scryfall search syntax at https://scryfall.com/docs/syntax
 
 Then simply run Scrycall using your plain text search query as the arguments. The below examples are from a `bash` shell. Exact formatting may vary slightly between shells. You can use a backtick `` ` `` in place of an apostrophe when making your query as well.
@@ -56,8 +51,8 @@ $ scry '!"time walk"' set:alpha --print="%{image_uris.large}" | xargs wget -O "t
 ```
 The Scryfall.com developers request that you add a delay of 50-100 milliseconds when making multiple rapid calls to the api. Scrycall automatically adds this delay between multiple calls within the program, but you are on your own when making calls elsewhere.
 
-## How to format output
 
+## Formatting the output
 You can use the flag `--print=` to construct a format string to print information about the cards. The contents of this format string will be printed for each card. Within the format string `%` is a special character used to indicate certain card attributes based on the JSON card objects.
 ```
 %n    name
@@ -69,6 +64,7 @@ You can use the flag `--print=` to construct a format string to print informatio
 %l    loyalty
 %o    oracle_text
 %f    flavor_text
+%s    set
 %%    this will print a literal % instead of interpreting a special character
 %|    this will separate output into nicely spaced columns
 ```
