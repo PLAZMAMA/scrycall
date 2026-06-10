@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 
 import shutil
 import stat
@@ -11,7 +11,7 @@ shutil.make_archive('scry_in_progress', 'zip', 'source')
 
 # create a new file with a shebang at the top, then concat the zip file contents to it
 with open('scry', 'wb') as scry_final:
-    scry_final.write(str.encode('#!/usr/bin/env python\n'))
+    scry_final.write(str.encode('#!/usr/bin/python3\n'))
     with open('scry_in_progress.zip', 'rb') as scry_zip:
         shutil.copyfileobj(scry_zip, scry_final)
 
