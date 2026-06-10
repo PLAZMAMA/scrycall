@@ -30,9 +30,9 @@ def parse_args(args):
 
 
 def parse_flag(arg, formatting):
-    if arg.startswith('--print='):
+    if arg.startswith('--print=') or arg.startswith('--format='):
         # format the plain-text output
-        value = arg[8:]
+        value = arg.split('=', 1)[1]
         if formatting:
             raise '"print=" flag already set'
         formatting.append(value)
@@ -81,7 +81,7 @@ def parse_flag(arg, formatting):
     elif arg == '--help':
         print_help()
         sys.exit(0)
-    elif arg == '--help-format':
+    elif arg == '--help-print' or arg == '--help-format':
         print_help_format()
         sys.exit(0)
     return False

@@ -53,7 +53,7 @@ The Scryfall.com developers request that you add a delay of 50-100 milliseconds 
 
 
 ## Formatting the output
-You can use the flag `--print=` to construct a format string to print information about the cards. The contents of this format string will be printed for each card. Within the format string `%` is a special character used to indicate certain card attributes based on the JSON card objects.
+You can use the flag `--print=` or `--format=` to construct a format string to print information about the cards. The contents of this format string will be printed for each card. Within the format string `%` is a special character used to indicate certain card attributes based on the JSON card objects.
 ```
 %n    name
 %m    mana_cost
