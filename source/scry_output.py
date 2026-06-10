@@ -19,6 +19,8 @@ ATTR_CODES = {
     '%l': '%{loyalty}',
     '%o': '%{oracle_text}',
     '%f': '%{flavor_text}',
+    '%s': '%{set}',
+    '%S': '%{set_name}',
 }
 
 
@@ -171,6 +173,11 @@ def get_attribute_value(attribute_name, data):
                 return None
         else:
             attr_value = get_value_from_json_object(attr, attr_value)
+
+            # set abbreviations are generally used all uppercase, but the dataset returns them in lowercase
+            if attribute_name == "set":
+                attr_value = attr_value.upper()
+
         if attr_value is None:
             # if an attribute cannot be found on a DFC, try looking at the individual faces
             if PRINT_FLAGS['dfc-smart-parse'] and data.get('card_faces') is not None:

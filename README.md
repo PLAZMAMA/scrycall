@@ -65,6 +65,7 @@ You can use the flag `--print=` to construct a format string to print informatio
 %o    oracle_text
 %f    flavor_text
 %s    set
+%S    set_name
 %%    this will print a literal % instead of interpreting a special character
 %|    this will separate output into nicely spaced columns
 ```
